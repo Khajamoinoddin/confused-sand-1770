@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background: white;
+        }
+        #main{
+           height:650px;
+           width: 34%;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           background-color: white; 
+           /* border-radius: 10px; */
+           margin: 40px auto;
+           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+         
+        }
+        h1{
+            /* margin-top: 80px; */
+            font-size: 35px;
+            /* font-family: Arial, Helvetica, sans-serif; */
+            padding-right: 300px;
+            font-weight: 400;
+        }
+        form{
+            width: 80%;
+            height: 40%;
+            background-color: white;
+            margin-top: 55px;
+            
+        }
+        /* hr{
+            height: 2px;
+            background-color: rgb(177, 177, 177);
+            margin-top: 5px ;
+        } */
+        input{
+            width: 100%;
+            height: 30px;
+            border: none;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        input:nth-child(3){
+            margin-top: 50px;
+        }
+        input:last-child{
+            width: 20%;
+            height: 40px;
+            margin-top: 30px;
+            background:rgb(59,145,194);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        P{
+            margin-top: 20px;
+            color: grey;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        a{
+            text-decoration: none;
+            
+        }
+        image{
+            height: 200px;
+            margin-top: 30px;
+        }
+
+        #main>div>img{
+            height: 150px;
+            width: 250px;
+            
+        }
+       
+
+
+    </style>
+</head>
+<body>
+    <div id="main">
+       <div> <img src="https://app.myhours.com/assets/myhours_app_logo_icon.svg" alt=""></div>
+       <h1>Sign in</h1>
+        
+        <form>
+            <input type="mail" id="email" placeholder="Email" required="required"/>
+            <hr/>
+            <input type="password" id="password" placeholder="Password" required="required"/>
+            <hr/>
+            <input type="submit" value="Sign in"/>
+        </form>
+        <p> <a href="signnup.html">Reset Password</a></p>
+        <p> <a href="signup.html">New To My Hours? Sign up</a></p>
+    </div>
+</body>
+</html>
+<script>
+    
+
+let form = document.querySelector("form");
+let suignupLs=JSON.parse(localStorage.getItem("signup"))||[];
+form.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(suignupLs.length===0){
+        alert("No User Till Now");
+        return;
+    }
+    let obj={
+             email:form.email.value,
+             password:form.password.value,
+    }
+    let isSignedin=false;
+    suignupLs.forEach(function(ele){
+        if(ele.email===obj.email&&ele.password===obj.password){
+            isSignedin=true;
+            localStorage.setItem("signin",JSON.stringify(ele));
+            alert("Sign Up Successfull");
+            window.location.href="homepage.html";
+
+        }
+
+    })
+    if(isSignedin===false){
+        alert("User Doesnot Exist");
+        
+    }
+    
+})
+    
+   
+
+
+
+</script>

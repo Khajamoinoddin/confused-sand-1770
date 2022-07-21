@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>My Hours | Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+        }
+        
+
+
+
+        h1 {
+            width: 100%;
+            height: 50px;
+            margin: auto;
+            margin-bottom: 20px;
+            padding-top: 30px;
+        }
+
+        h1+p {
+            width: 100%;
+            height: 30px;
+        }
+
+        h1+p+p {
+            width: 100%;
+            height: 30px;
+        }
+
+        h1+p+p+p {
+            width: 100%;
+            height: 30px;
+        }
+
+        #signup {
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            background-color: rgb(59,145,194);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+
+
+        input {
+            width: 100%;
+            display: block;
+            margin: 15px 0px;
+            font-size: 15px;
+            padding: 2%;
+            border: 1px solid gray;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        form {
+            width: 500px;
+            margin: 1% auto;
+            padding: 3%;
+            background: transparent;
+            border-radius: 10px;
+        }
+
+        #password+p {
+            width: 100%;
+            height: 40px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #signup+p {
+            width: 100%;
+            height: 40px;
+            margin: auto;
+            text-align: center;
+        }
+        form{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        .Ptag{
+            padding-top: 5px;
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <form action="">
+            <img src="https://allhoursproductb0b1.blob.core.windows.net/static-files/myhours_logo_icon.svg" alt="">
+            <h1>Welcome To My Hours</h1>
+            
+                
+            </p>
+            <label for="">Full name </label>
+            <p class="Ptag">So we know what to call you in the app</p>
+            <br>
+            <input type="text" id="name" placeholder="Enter your full name">
+            <br>
+            <label for="">Email</label>
+            <p class="Ptag">You will use this email to login</p>
+            <br>
+            <input type="email" id="email" placeholder="Enter email">
+            <br>
+            <label for=""> password</label>
+            <br>
+            <input type="password" name="" id="password" placeholder="Enter password">
+
+            <p>By signining up ,you're agreed to the  <a href="">terms of Use</a> </p>
+
+            <button id="signup">Sign Up</button>
+
+           
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    let form= document.querySelector("form");
+    let suignupLs=JSON.parse(localStorage.getItem("signup"))||[];
+
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        let obj={
+                 name:form.name.value,
+                 email:form.email.value,
+                 password:form.password.value,
+
+        }
+        if(obj.name==""||obj.email==""){
+            alert("Field Empty")
+            return
+        }
+        
+        // console.log(obj)
+        suignupLs.push(obj)
+        localStorage.setItem("signup",JSON.stringify(suignupLs));
+    })
+</script>
